@@ -1,6 +1,6 @@
 PROGRAM CALCULATOR
     IMPLICIT NONE
-    INTEGER :: A, B, CHOICE
+    INTEGER :: NUM1, NUM2, CHOICE
     REAL :: TOTAL
     LOGICAL :: REPEAT
     CHARACTER(LEN=1) :: AGAIN
@@ -31,19 +31,19 @@ PROGRAM CALCULATOR
         END IF
 
         PRINT *, "Enter first number: "
-        READ *, A
+        READ *, NUM1
         PRINT *, "Enter second number: "
-        READ *, B
+        READ *, NUM2
 
         SELECT CASE (CHOICE)
         CASE (1)
-            TOTAL = A + B
+            TOTAL = NUM1 + NUM2
         CASE (2)
-            TOTAL = A - B
+            TOTAL = NUM1 - NUM2
         CASE (3)
-            TOTAL = A * B
+            TOTAL = NUM1 * NUM2
         CASE (4)
-            TOTAL = REAL(A) / B
+            TOTAL = REAL(NUM1) / NUM2
         END SELECT
 
         PRINT *, "Result: ", TOTAL
