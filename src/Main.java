@@ -11,7 +11,6 @@ public class Main {
         System.out.println("* Welcome to ICS's Zodiac Identifier! *");
         System.out.println("***************************************");
         System.out.println();
-        System.out.println();
         System.out.println("---------------------------------------");
         System.out.println("           Birth Information");
         System.out.println("---------------------------------------");
@@ -29,6 +28,8 @@ public class Main {
 
             zodiacSign(month, day);
 
+            System.out.println("---------------------------------------");
+
             repeat = repeatProgram(scanner);
 
             
@@ -37,7 +38,7 @@ public class Main {
         System.out.println();
         System.out.println("---------------------------------------");
         System.out.println("Thank you for using Zodiac Identifier!");
-        System.out.println("Goodbye!");
+        System.out.println("              Goodbye!");
         System.out.println("---------------------------------------");
         scanner.close();
     }
@@ -110,43 +111,43 @@ public class Main {
     public static void zodiacSign(int month, int day) {
         // Zodiac sign validation logic
         if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
-            System.out.println("You're an Aquarius!");
+            System.out.println("          You're an Aquarius!");
         } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
-            System.out.println("You're a Pisces!");
+            System.out.println("          You're a Pisces!");
         } else if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
-            System.out.println("You're an Aries!");
+            System.out.println("          You're an Aries!");
         } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
-            System.out.println("You're a Taurus!");
+            System.out.println("          You're a Taurus!");
         } else if ((month == 5 && day >= 21) || (month == 6 && day <= 21)) {
-            System.out.println("You're a Gemini!");
+            System.out.println("          You're a Gemini!");
         } else if ((month == 6 && day >= 22) || (month == 7 && day <= 22)) {
-            System.out.println("You're a Cancer!");
+            System.out.println("          You're a Cancer!");
         } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
-            System.out.println("You're a Leo!");
+            System.out.println("          You're a Leo!");
         } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
-            System.out.println("You're a Virgo!");
+            System.out.println("          You're a Virgo!");
         } else if ((month == 9 && day >= 23) || (month == 10 && day <= 23)) {
-            System.out.println("You're a Libra!");
+            System.out.println("          You're a Libra!");
         } else if ((month == 10 && day >= 24) || (month == 11 && day <= 21)) {
-            System.out.println("You're a Scorpius!");
+            System.out.println("          You're a Scorpius!");
         } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
-            System.out.println("You're a Sagittarius!");
+            System.out.println("         You're a Sagittarius!");
         } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
-            System.out.println("You're a Capricornus!");
+            System.out.println("         You're a Capricornus!");
         } else {
-            System.out.println("What's your sign? The Singularity?");
+            System.out.println("    What's your sign? The Singularity?");
         }
     }
 
     public static boolean repeatProgram(Scanner scanner) {
         char choice;
         
+        System.out.println();
+        System.out.println("---------------------------------------");
+        System.out.println("             Program Menu");
+        System.out.println("---------------------------------------");
         do {
             // Choice to repeat program
-            System.out.println();
-            System.out.println("---------------------------------------");
-            System.out.println("             Program Menu");
-            System.out.println("---------------------------------------");
             System.out.print("Would you like to try again? [y/N]: ");
 
             choice = Character.toLowerCase(scanner.next().charAt(0));
