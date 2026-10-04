@@ -17,14 +17,10 @@ public class Main {
         System.out.println("---------------------------------------");
 
         // Mega loop for program
-        boolean repeat = false;
+        boolean repeat;
         do {
-            // Variable declaration & default assignment of values
-            int month = 0;
-            int day = 0;
-            int maxDay = 0;
-
-            validationLogic(month, day, maxDay, scanner);
+            int month = getMonth(scanner);
+            int day = getDay(scanner, month);
 
             System.out.println();
             System.out.println("---------------------------------------");
@@ -33,18 +29,9 @@ public class Main {
 
             zodiacSign(month, day);
 
-            boolean validChoice = false;
+            repeat = repeatProgram(scanner);
 
-            do {
-                // Choice to repeat program
-                System.out.println();
-                System.out.println("---------------------------------------");
-                System.out.println("             Program Menu");
-                System.out.println("---------------------------------------");
-                System.out.print("Would you like to try again? [y/N]: ");
-
-                repeatProgram(scanner, repeat, validChoice);
-            } while (!validChoice);
+            
         } while (repeat);
 
         System.out.println();
@@ -55,8 +42,9 @@ public class Main {
         scanner.close();
     }
 
-    public static void validationLogic(int month, int day, int maxDay, Scanner scanner) {
+    public static int getMonth(Scanner scanner) {
         // Month input & validation logic
+        int month = 0;
         do {
             try {
                 System.out.print("Please enter your birth month: ");
@@ -71,17 +59,13 @@ public class Main {
                 month = 0;
             }
         } while (month < 1 || month > 12);
+        return month;
+    }
 
-        // Month/Day validation logic
-        if (month == 2) {
-            maxDay = 28;
-        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
-            maxDay = 30;
-        } else {
-            maxDay = 31;
-        }
-
+    public static int getDay(Scanner scanner, int month) {
         // Day input & validation logic
+        int day = 0;
+        int maxDay = dayValidation(month);
         do {
             try {
                 System.out.print("Please enter your birth day: ");
@@ -96,6 +80,31 @@ public class Main {
                 day = 0;
             }
         } while (day < 1 || day > maxDay);
+
+        return day;
+    }
+
+    public static int dayValidation(int month) {
+        // Month/Day validation logic
+        int maxDay = 0;
+        switch (month) {
+            case 2:
+                maxDay = 28;
+                break;
+
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                maxDay = 30;
+                break;
+
+            default:
+                maxDay = 31;
+                break;
+        }
+
+        return maxDay;
     }
 
     public static void zodiacSign(int month, int day) {
@@ -129,18 +138,24 @@ public class Main {
         }
     }
 
-    public static void repeatProgram(Scanner scanner, boolean repeat, boolean validChoice) {
-        char choice = scanner.next().charAt(0);
-        char again = Character.toLowerCase(choice);
+    public static boolean repeatProgram(Scanner scanner) {
+        char choice;
+        
+        do {
+            // Choice to repeat program
+            System.out.println();
+            System.out.println("---------------------------------------");
+            System.out.println("             Program Menu");
+            System.out.println("---------------------------------------");
+            System.out.print("Would you like to try again? [y/N]: ");
 
-        if (again == 'y') {
-            repeat = true;
-            validChoice = true;
-        } else if (again == 'n') {
-            repeat = false;
-            validChoice = true;
-        } else {
-            System.out.println("You had TWO choices, and you chose something else?!");
-        }
+            choice = Character.toLowerCase(scanner.next().charAt(0));
+
+            if (choice != 'y' && choice != 'n') {
+                System.out.println("You had TWO choices, and you chose something else?!");
+            }
+        } while (choice != 'y' && choice != 'n');
+
+        return choice == 'y';
     }
 }
